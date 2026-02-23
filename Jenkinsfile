@@ -19,18 +19,16 @@ pipeline {
             }
         }
 
-        stage('Deploy NGINX') {
-            steps {
-                sh '''
-                docker rm -f nginx-lb || true
-                docker run -d --name nginx-lb \
-                --link backend1 \
-                --link backend2 \
-                -p 80:80 \
-                -v $(pwd)/nginx/default.conf:/etc/nginx/conf.d/default.conf \
-                nginx
-                '''
-            }
-        }
+       stage('Deploy NGINX') {
+    steps {
+        sh '''
+        docker rm -f nginx-lb || true
+        docker run -d --name nginx-lb \
+        --link backend1 \
+        --link backend2 \
+        -p 8081:80 \
+        -v $(pwd)/nginx/default.conf:/etc/nginx/conf.d/default.conf \
+        nginx
+        '''
     }
 }
