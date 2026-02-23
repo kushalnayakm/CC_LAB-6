@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Deploy NGINX Load Balancer') {
+        stage('Deploy NGINX') {
             steps {
                 sh '''
                 docker rm -f nginx-lb || true
