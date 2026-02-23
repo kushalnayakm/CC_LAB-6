@@ -1,0 +1,14 @@
+FROM jenkins/jenkins:lts
+
+USER root
+
+# Fix Debian repositories & install tools
+RUN apt-get update && \
+    apt-get install -y \
+    docker.io \
+    make \
+    g++ \
+    curl && \
+    apt-get clean
+
+USER jenkins
